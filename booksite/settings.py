@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'em!tb&i&vyaa(29hsvbud8#zdusdt0g3b(19nt(09te9ijg^=q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -31,8 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'blog_1',
-    'blog_2',
+    'accounts',
+    'blog',
+    'news',
     'blog_post',
     'book_1',
     'book_2',

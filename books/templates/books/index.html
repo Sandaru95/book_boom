@@ -2,7 +2,7 @@
 
 {% block body %}
   <header>
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel" style="border-bottom: 1px solid lightgray;">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -10,24 +10,25 @@
     </ol>
     <div class="carousel-inner" role="listbox">
       <!-- Slide One - Set the background image for this slide in the line below -->
-      <div class="carousel-item active" style="background-image: url('http://placehold.it/1900x1080')">
+      <div class="carousel-item active" style="background: #ffffff url('/static/img/home_page_book.jpg') no-repeat center;">
         <div class="carousel-caption d-none d-md-block">
-          <h3>First Slide</h3>
-          <p>This is a description for the first slide.</p>
+          <h3 class="sanda-top-image-slide-text">First Slide</h3>
+          <p class="sanda-top-image-slide-text">You may have to fight a battle more than once to win it.</p
+            >
         </div>
       </div>
       <!-- Slide Two - Set the background image for this slide in the line below -->
-      <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
+      <div class="carousel-item" style="background: #ffffff url('/static/img/home_page_book2.jpg') no-repeat center;">
         <div class="carousel-caption d-none d-md-block">
-          <h3>Second Slide</h3>
-          <p>This is a description for the second slide.</p>
+          <h3 class="sanda-top-image-slide-text">Second Slide</h3>
+          <p class="sanda-top-image-slide-text">It is never too late to be what you might have been.</p>
         </div>
       </div>
       <!-- Slide Three - Set the background image for this slide in the line below -->
-      <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
+      <div class="carousel-item" style="background: #ffffff url('/static/img/home_page_book3.jpg') no-repeat center;">
         <div class="carousel-caption d-none d-md-block">
-          <h3>Third Slide</h3>
-          <p>This is a description for the third slide.</p>
+          <h3 class="sanda-top-image-slide-text">Third Slide</h3>
+          <p class="sanda-top-image-slide-text">Success is the sum of small efforts, repeated day-in and day-out.</p>
         </div>
       </div>
     </div>
@@ -43,139 +44,47 @@
   </header>
 
 <!-- Page Content -->
-<div class="container">
+<div class="container sanda-main-container">
 
-  <h1 class="my-4">Welcome to Modern Business</h1>
-
-  <!-- Marketing Icons Section -->
-  <div class="row">
-    <div class="col-lg-4 mb-4">
-      <div class="card h-100">
-        <h4 class="card-header">Card Title</h4>
-        <div class="card-body">
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">Learn More</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 mb-4">
-      <div class="card h-100">
-        <h4 class="card-header">Card Title</h4>
-        <div class="card-body">
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">Learn More</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 mb-4">
-      <div class="card h-100">
-        <h4 class="card-header">Card Title</h4>
-        <div class="card-body">
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">Learn More</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- /.row -->
+  <h2 class="my-4" style="text-align:center;margin:auto;text-decoration:underline;">Greetings! This is the home page.
 
   <!-- Portfolio Section -->
-  <h2>Portfolio Heading</h2>
+  <h3>Latest books <small><kbd class="text-info">{{ all_book_count }}</kbd></small></h3>
 
   <div class="row">
+
+    {% for book in book_list %}
     <div class="col-lg-4 col-sm-6 portfolio-item">
       <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <a href="#"><img class="card-img-top" src="{{ book.cover_photo.url }}" alt="{{ book.title }} : Nishantha Publishers"></a>
         <div class="card-body">
           <h4 class="card-title">
-            <a href="#">Project One</a>
+            <a href="{% url 'book_single:index' pk=book.pk %}">{{ book.title }}</a>
           </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
+          <p class="card-text">{{ book.description }}</p>
         </div>
       </div>
     </div>
-    <div class="col-lg-4 col-sm-6 portfolio-item">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Project Two</a>
-          </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 col-sm-6 portfolio-item">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Project Three</a>
-          </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 col-sm-6 portfolio-item">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Project Four</a>
-          </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 col-sm-6 portfolio-item">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Project Five</a>
-          </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 col-sm-6 portfolio-item">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Project Six</a>
-          </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque earum nostrum suscipit ducimus nihil provident, perferendis rem illo, voluptate atque, sit eius in voluptates, nemo repellat fugiat excepturi! Nemo, esse.</p>
-        </div>
-      </div>
-    </div>
+    {% endfor %}
   </div>
   <!-- /.row -->
 
   <!-- Features Section -->
   <div class="row">
     <div class="col-lg-6">
-      <h2>Modern Business Features</h2>
-      <p>The Modern Business template by Start Bootstrap includes:</p>
-      <ul>
-        <li>
-          <strong>Bootstrap v4</strong>
-        </li>
-        <li>jQuery</li>
-        <li>Font Awesome</li>
-        <li>Working contact form with validation</li>
-        <li>Unstyled page elements for easy customization</li>
-      </ul>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
+      <h3 class="sanda-topic-style">Some Reasons to use this site.</h3>
+      <br>
+      <dl>
+        <dt>Little Points</dt>
+          <dd>1.You'll get the new informations about new releases before anyone.</dd>
+          <dd>2.You'll able to view books without having to purchase them for free.</dd>
+          <dd>3.24h support for problems regarding our products</dd>
+      </dl>
+      <p>Thanks for visiting this site. This site have 24h support to the problems related to our product. You'll be able to use this site as a online reading platform. This site offers the access to the high quality books for free.</p>
     </div>
     <div class="col-lg-6">
-      <img class="img-fluid rounded" src="http://placehold.it/700x450" alt="">
+      {% load staticfiles %}
+      <img class="img-fluid img-rounded img-thumbnail" src="{% static 'img/first_purpose.jpg' %}" alt="{{ object.title }} - Nishantha Publishers">
     </div>
   </div>
   <!-- /.row -->
@@ -185,10 +94,10 @@
   <!-- Call to Action Section -->
   <div class="row mb-4">
     <div class="col-md-8">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
+      <p>Have any problems? Having any trouble with something? <mark>Do not mess your mind.</mark> </p>
     </div>
     <div class="col-md-4">
-      <a class="btn btn-lg btn-secondary btn-block" href="#">Call to Action</a>
+      <button class="btn btn-lg btn-secondary btn-block" onclick="contact_print()">Contact us</button>
     </div>
   </div>
 

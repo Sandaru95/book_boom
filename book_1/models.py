@@ -14,6 +14,7 @@ class Book(models.Model):
     book_type = models.ForeignKey(BookType, on_delete=models.CASCADE)
     description = models.TextField(max_length=500)
     cover_photo = models.FileField()
+    preview = models.FileField()
 
     def __str__(self):
         return str(self.title) + ' - ' + str(self.author)

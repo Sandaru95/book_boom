@@ -21,9 +21,10 @@ urlpatterns = [
     path('book-3/', include('book_3.urls')),
     path('book-4/', include('book_4.urls')),
     path('book-single/', include('book_single.urls')),
-    path('blog-1', include('blog_1.urls')),
-    path('blog-2', include('blog_2.urls')),
-    path('blog-post', include('blog_post.urls')),
+    path('blog/', include('blog.urls')),
+    path('news/', include('news.urls')),
+    path('blog-post/', include('blog_post.urls')),
+    path('accounts/', include('accounts.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
