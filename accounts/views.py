@@ -1,13 +1,13 @@
 from django.shortcuts import render, redirect, HttpResponse
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.views import generic
 from .forms import User_Form
 
 
-class IndexView(generic.View):
-    def get(self, request):
-        return HttpResponse("ACCOUNTS!")
+class IndexView(generic.TemplateView):
+    template_name = 'accounts/index.html'
+
 
 class UserRegisterView(generic.View):
     form_class = User_Form
@@ -38,10 +38,19 @@ class UserRegisterView(generic.View):
 
                 if user.is_active:
                     login(request, user)
-                    return redirect('accounts:index')
+                    return redirect('accounts:register_success')
 
         else:
-            return render(request, self.template_name, {'form': form})
+            return redirect('accounts:register_failed')
+
+
+class RegisterSuccessView(generic.TemplateView):
+    template_name = 'accounts/registration_success.html'
+
+
+class RegisterFailedView(generic.TemplateView):
+    template_name = 'accounts/registration_failed.html'
+
 
 class UserLoginView(generic.View):
     template_name = 'accounts/login_form.html'
@@ -59,5 +68,7 @@ class UserLoginView(generic.View):
         form = self.form_class
         return render(request, self.template_name, {'form':form})
 
-
-
+class UserLogoutView(generic.View):
+    def get(self, request):
+        logout(request)
+        return render(request, 'accounts/logout.html')

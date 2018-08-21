@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,6 +38,7 @@
 </head>
 
 <body>
+
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin: auto; text-align: center;">
@@ -46,7 +48,86 @@
                 <h5>Ganemulla. Sri Lanka.</h5>
             </div>
         </div>
+
+        <!-- if the user is logged or in other words if the user is authenticated -->
+
+        {% if user.is_authenticated %}
         <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin: auto; text-align: center;">
+                <p>
+                    <a href="{% url 'accounts:index' %}">My Account</a> or <a href="{% url 'accounts:logout' %}">Logout</a>
+                </p>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin: auto; text-align: center;">
+                <p class="lead" style="font-size:22;font-weight: bold;">
+                  Hi {{ user.username }}! 💩
+                </p>
+            </div>
+        </div>
+    </div>
+    <br>
+    <hr>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="position:sticky;top:0;z-index:100;">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'books:index' %}">Nishantha Publishers</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item" id="sanda-nav-item">
+              <a class="nav-link" href="{% url 'about:index' %}">About</a>
+            </li>
+            <li class="nav-item" id="sanda-nav-item">
+              <a class="nav-link" href="{% url 'services:index' %}">Services</a>
+            </li>
+            <li class="nav-item" id="sanda-nav-item">
+              <a class="nav-link" href="{% url 'contact:index' %}">Contact</a>
+            </li>
+            <li class="nav-item dropdown" id="sanda-nav-item">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Book Showcase
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+
+                <a class="dropdown-item" href="{% url 'book_1:index' %}">Novel Books</a>
+                <a class="dropdown-item" href="{% url 'book_2:index' %}">Motivational Books</a>
+                <a class="dropdown-item" href="{% url 'book_3:index' %}">Children Stories</a>
+                <a class="dropdown-item" href="{% url 'book_4:index' %}">Advice books</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown" id="sanda-nav-item">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sections
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+                <a class="dropdown-item" href="{% url 'blog:index' %}">Our Blog</a>
+                <a class="dropdown-item" href="{% url 'news:index' %}">News</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown" id="sanda-nav-item">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                External Pages
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+                <a class="dropdown-item" href="full-width.html">Full Width Page</a>
+                <a class="dropdown-item" href="sidebar.html">Sidebar Page</a>
+                <a class="dropdown-item" href="faq.html">FAQ</a>
+                <a class="dropdown-item" href="404.html">404</a>
+                <a class="dropdown-item" href="pricing.html">Pricing Table</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- if user is not logged in -->
+
+    {% else %}
+
+    <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin: auto; text-align: center;">
                 <p>
                   <a href="{% url 'accounts:register' %}">Register</a> or <a href="{% url 'accounts:login' %}">Login</a>
@@ -111,9 +192,21 @@
         </div>
       </div>
     </nav>
+
+    {% endif %}
+    <!-- the if else ends/ -->
+
+    <div class="container">
     {% block body %}
 
     {% endblock %}
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
