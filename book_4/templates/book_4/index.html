@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block head %}Advice Books - Book Type 4: Nishantha Publishers{% endblock %}
+
+{% block body %}
+<!-- Page Content -->
+<div class="container">
+
+  <!-- Page Heading/Breadcrumbs -->
+  <h1 class="mt-4 mb-3 sanda-topic-style">Advice Book</h1>
+
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="{% url 'books:index' %}">Home</a>
+    </li>
+    <li class="breadcrumb-item active">Advice Books</li>
+  </ol>
+{% if object_list %}
+{% for book in object_list %}
+  <!-- Project One -->
+  <div class="row">
+    <div class="col-md-5">
+      <a href="#">
+        <img class="img-fluid img-thumbnail rounded mb-3 mb-md-0 img-gray-border-sanda" src="{{ book.cover_photo.url }}" alt="Nishantha Publishers {{ book.title }}" width="750">
+      </a>
+    </div>
+    <div class="col-md-5">
+      <h3>{{ book.title }}</h3>
+      <h5>{{ book.author }}</h5>
+      <p>{{ book.description }}</p>
+      <a class="btn btn-primary" href="{% url 'book_single:index' pk=book.pk %}">View Book
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
+    </div>
+  </div>
+  <!-- /.row -->
+  <hr>
+{% endfor %}
+{% else %}
+<h4>No books found!</h4>
+{% endif %}
+
+</div>
+{% endblock %}

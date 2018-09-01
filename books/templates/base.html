@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {% load staticfiles %}
+    <link rel="icon" type="image/jpg" href="{% static 'img/nishantha_logo.jpg' %}">
+    <title>{% block head %}{% endblock %}</title>
+
+    {% load static %}
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/modern-business.css' %}" rel="stylesheet">
+    <!-- Home maked styles for this template -->
+    <link href="{% static 'css/style1.css' %}" rel="stylesheet">
+    <style type="text/css">
+      #sanda-nav-item:active{
+        background-color: navy;
+        color: white;
+      }
+      .sanda-main-container{
+        border: 1px solid lightgray;
+       }
+      .sanda-topic-style{
+          text-align:center;
+          margin:auto;
+          text-decoration:underline;
+      }
+      .sanda-top-image-slide-text{
+          /*color: #5d6168;*/
+          color: white;
+      }
+      .navbar, .navbar-expand-lg, .navbar-nav, .nav-item, .nav-link, .navbar-brand{
+          background-color: dodgerblue;
+          color: #FFFFFF;
+      }
+      .nav-item:hover, .nav-link:hover{
+          background-color: #1977d3;
+          color: #FFFFFF;
+      }
+      .navbar-toggler .navbar-toggler-right .navbar-header .icon-bar{
+          background-color: green;
+      }
+      body{
+          margin-top: 0px;
+          background-color: #edeff2;
+      }
+    </style>
+</head>
+
+<body>
+
+    <div class="container" style="background-color: #edeff2; margin-top: 0px;">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="text-align: center;">
+                <img src="{% static 'img/nishantha_logo.jpg' %}" class="img img-fluid img-thumbnail" style="margin-top: 0px;" width="170" height="auto">
+                <h2>Nishantha Publishers</h2>
+                <h5>248, Bollatha,</h5>
+                <h5>Ganemulla. Sri Lanka.</h5>
+            </div>
+            {% if user.is_authenticated %}
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="text-align: center;font-family: ubuntu;">
+                  <h4>Hi! {{ user.username }} 😜</h4>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <hr>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-inverse" style="position:sticky;top:0;z-index:100;">
+      <div class="container-fluid">
+
+        <a class="navbar-brand" href="{% url 'books:index' %}">Nishantha Publishers</a>
+        <button class="navbar-toggler navbar-toggler-right navbar-header" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <div class="btn-group-vertical">
+              <span class="badge badge-lg badge-primary">-</span>
+          </div>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item" id="sanda-nav-item">
+              <a class="nav-link" href="{% url 'about:index' %}">About</a>
+            </li>
+            <li class="nav-item" id="sanda-nav-item">
+              <a class="nav-link" href="{% url 'contact:index' %}">Contact</a>
+            </li>
+            <li class="nav-item dropdown" id="sanda-nav-item">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Book Showcase
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+
+                <a class="dropdown-item" href="{% url 'book_1:index' %}">Novel Books</a>
+                <a class="dropdown-item" href="{% url 'book_2:index' %}">Motivational Books</a>
+                <a class="dropdown-item" href="{% url 'book_3:index' %}">Children Stories</a>
+                <a class="dropdown-item" href="{% url 'book_4:index' %}">Advice books</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown" id="sanda-nav-item">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sections
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+                <a class="dropdown-item" href="{% url 'blog:index' %}">Our Blog</a>
+                <a class="dropdown-item" href="{% url 'news:index' %}">News</a>
+              </div>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item" id="sanda-nav-item">
+              <a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a>
+            </li>
+            {% else %}
+            <li class="nav-item" id="sanda-nav-item">
+              <a class="nav-link" href="{% url 'accounts:register' %}">Register</a>
+            </li>
+            <li class="nav-item" id="sanda-nav-item">
+              <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- the if else ends/ -->
+
+    <div class="container">
+    {% block body %}
+
+    {% endblock %}
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <!-- Footer -->
+    <footer class="py-5 bg-primary">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Nishantha Publishers 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+
+  </body>
+
+</html>
