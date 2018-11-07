@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block head %}{{ book_type }} Books | Check this list out then Buy{% endblock %}
+
+{% block body %}
+{% include 'shop/include_cart.html' %}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="{% url 'shop:index' %}">Online BookShop</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a href="{% url 'shop:shop_list' pk=book_type_pk %}">{{ book_type }}</a>
+    </li>
+</ol>
+<br>
+<h2 style="text-align:center;text-decoration:underline;">{{ book_type }} Books</h2>
+<br>
+{% if book_list %}
+<section class="book_horizontal_list">
+    <div class="book_horizontal_list_head">
+        <h4>Novels</h4>
+    </div>
+    <div class="book_horizontal_list_body">
+        {% for book in book_list %}
+        <div class="book_horizontal_list_body_item" style="width:20%;float:left;">
+            <img class="img-fluid img-thumbnail" src="{{ book.cover_photo.url }}" alt="{{ book.title }}" style="width:100%;">
+            <div class="book_horizontal_list_body_item_desc" style="text-indent:5px;background-color:white;border-left:1px solid lightgray;border-right:1px solid lightgray;border-bottom:1px solid lightgray;">
+                <a href="{% url 'shop:book_buy' pk=book.pk %}"><h5>{{ book.title }}</h5></a>
+                <h5>Rs.{{ book.price }}</h5>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endif %}
+{% endblock %}

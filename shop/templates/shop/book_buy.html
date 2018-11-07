@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block head %}{{ object.title }} | Check this book and Buy{% endblock %}
+
+{% block body %}
+{% include 'shop/include_cart.html' %}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="{% url 'shop:index' %}">Online BookShop</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a href="{% url 'shop:shop_list' pk=object.book_type.pk %}">{{ object.book_type }}</a>
+    </li>
+    <li class="breadcrumb-item active">{{ object.title }}</li>
+</ol>
+<section>
+    <div style="width:55%;float:left;">
+        <img class="img-fluid img-thumbnail" src="{{ object.cover_photo.url }}" alt="{{ object.title }}" style="width:100%;">
+    </div>
+    <div style="width:45%;float:right;text-align:center;">
+        <h4>{{ object.title }}</h4>
+        <br>
+        <h4>Rs. {{ object.price }}</h4>
+        <br>
+        <form action="{% url 'shop:cart_add' pk=object.pk %}" method="post">
+            {% csrf_token %}
+            <label for="qty">Quantity:</label>
+            <input type="number" id="qty" name="qty">
+            <br>
+            <button type="submit">Add To Cart</button>
+        </form>
+    </div>
+</section>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

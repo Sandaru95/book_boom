@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block head %}Contact: Nishantha Publishers{% endblock %}
+
+{% block body %}
+<!-- Page Content -->
+<div class="container sanda-main-container">
+
+  <!-- Page Heading/Breadcrumbs -->
+  <h1 class="mt-4 mb-3 sanda-topic-style">Contact
+  </h1>
+
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="{% url 'books:index' %}">Home</a>
+    </li>
+    <li class="breadcrumb-item active">Contact</li>
+  </ol>
+
+  <!-- Content Row -->
+  <div class="row">
+    <!-- Map Column -->
+    <div class="col-lg-8 mb-4">
+
+      <!-- Self Embedded Google Map -->
+      <iframe width="100%" height="400px" id="gmap_canvas" src="https://maps.google.com/maps?q=nishantha%20publisher%20&t=&z=11&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.pureblack.de"></a><style>.mapouter{text-align:right;height:400px;width:700px;}.gmap_canvas {overflow:hidden;background:none!important;height:400px;width:700px;}</style>
+    
+    </div>
+
+    <!-- Contact Details Column -->
+    <div class="col-lg-4 mb-4">
+      <h3>Contact Details</h3>
+      <p>
+        248 Bollatha,
+        <br>Ganemulla. Sri Lanka 11024
+        <br>
+      </p>
+      <p>
+        <abbr title="Phone">P</abbr>: +94112247436
+      </p>
+      <p>
+        <abbr title="Email">E</abbr>:
+        <a href="mailto:name@example.com">nishanthapubli@gmail.com
+        </a>
+      </p>
+      <p>
+        <abbr title="Hours">H</abbr>: Monday - Friday: 9:00 AM to 5:00 PM
+      </p>
+    </div>
+  </div>
+  <!-- /.row -->
+
+  <!-- Contact Form -->
+
+
+  <!-- If user is logged then will fill these forms for them with the details that we have about them -->
+  {% if user.is_authenticated %}
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="full_name">Full name</label>
+      <input type="text" class="form-control" id="full_name" name="full_name" aria-describedby="emailHelp" value="{{ user.username }}">
+      <small id="fullnameHelp" class="form-text text-muted">We'll never share your details with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="email_address">Email</label>
+      <input type="email" class="form-control" id="email_address" name="email_address" aria-describedby="emailHelp" value="{{ user.email }}">
+    </div>
+    <div class="form-group">
+      <label for="phone_number">Phone Number</label>
+      <input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder="Enter your Phone number">
+    </div>
+    <div class="form-group">
+      <label for="message">Message</label>
+      <input type="text" class="form-control" id="message"  name="message" placeholder="Enter your message here!" width="100%" height="400px">
+    </div>
+    <button type="submit" class="btn btn-info">Submit</button>
+    <button type="reset" class="btn btn-danger">Reset</button>
+  </form>
+
+  <!-- if user is not logged then we will give them a blank form -->
+  {% else %}
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="full_name">Full name</label>
+      <input type="text" class="form-control" id="full_name" name="full_name" aria-describedby="emailHelp" placeholder="Enter your Full name">
+      <small id="fullnameHelp" class="form-text text-muted">We'll never share your details with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="email_address">Email</label>
+      <input type="email" class="form-control" id="email_address" name="email_address" aria-describedby="emailHelp" placeholder="Enter your Email Address">
+    </div>
+    <div class="form-group">
+      <label for="phone_number">Phone Number</label>
+      <input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder="Enter your Phone number">
+    </div>
+    <div class="form-group">
+      <label for="message">Message</label>
+      <input type="text" class="form-control" id="message"  name="message" placeholder="Enter your message here!" width="100%" height="400px">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="reset" class="btn btn-danger">Reset</button>
+  </form>
+  {% endif %}
+  <br>
+  <br>
+  </div>
+<br>
+  <!-- /.row -->
+
+{% endblock %}

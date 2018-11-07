@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block head %}Cart | Check out for cart items{% endblock %}
+
+{% block body %}
+{% include 'shop/include_cart.html' %}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="{% url 'shop:index' %}">Online BookShop</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a href="{% url 'shop:cart' %}">Cart</a>
+    </li>
+</ol>
+<div style="margin:50px;background-color:#aeb3ba;padding-top:10px;">
+    <h2 style="font-weight:bold;margin:25px;text-align:center;">Items in your Cart</h2>
+    <hr style="background-color:black;">
+    <br>
+    {% if object_list %}
+    {% for object in object_list %}
+    <div style="width: 80%;text-indent:10px;">
+        <p>Book Name: {{ object.title }}</p>
+        <p>Book Type: {{ object.book_type }}</p>
+        <p>Quantity: {{ object.qty }}</p>
+        <p>Price of a Book: {{ object.price }}</p>
+        <form action="{% url 'shop:cart_remove' pk=object.pk %}" method="post">
+            {% csrf_token %}
+            <button class="btn btn-danger" type="submit">Remove</button>
+        </form>
+    </div>
+    <hr>
+    {% endfor %}
+    <hr style="background-color:black;">
+    <div style="background-color:#aeb3ba;text-align:right;padding-right:15px;padding-bottom:15px;">
+        <p>Cart Subtotal: {{ cart_subtotal }}</p>
+        <p>Shipping Price: {{ shipping_price }}</p>
+        <h5>Total: {{ cart_total }}</h5>
+        <button type="submit" class="btn btn-primary">Checkout</button>
+    </div>
+    {% else  %}
+    <div style="width: 80%;text-indent:10px;">
+        <h1 style="text-indent:10px;padding-bottom:10px;">No Item in your Cart</h1>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

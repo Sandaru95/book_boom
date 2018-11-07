@@ -1,0 +1,11 @@
+function contact_print(){
+	window.alert('mail: nishanthapubli@gmail.com');
+}
+function verify_login(){
+	let userName = document.getElementById('username').value;
+	let password = document.getElementById('password').value;
+
+	if (userName == '' && password == ''){
+		window.alert("There's something wrong with the credentials entered. Check them and try again!");
+	}
+}

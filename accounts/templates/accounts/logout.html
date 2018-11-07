@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block head %}Logged out{% endblock %}
+
+{% block body %}
+<br>
+<h2 class="sanda-topic-style">Successfully Logged out!</h2>
+<br>
+<h5>We have successfully logged out from your account. If you would like login again then <a href="{% url 'accounts:login' %}">click here.</a>
+<br>
+<br>
+{% endblock %}

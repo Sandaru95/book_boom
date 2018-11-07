@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block head %}Free Read Online | Allows you to read books free{% endblock %}
+
+{% block body %}
+<br>
+<h2 style="text-decoration:underline;text-align:center;margin:auto;">Read Free </h2>
+<br>
+<section style="width:80%;margin:auto;border:1px solid lightgray;">
+    {% if object_list %}
+    {% for object in object_list %}
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            <div>
+                <img class="img-fluid img-thumbnail" src="{{ object.cover_photo.url }}" style="width:100%;">
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            <div>
+                <br>
+                <h3 class="text" style="text-decoration:underline;">{{ object.title }}</h3>
+                <br>
+                <h5><a href="{{ object.preview.url }}">Read it Free</a></h5>
+            </div>
+        </div>
+    </div>
+    <div style="border:1px solid lightgray;"></div>
+    {% endfor %}
+    {% else %}
+    <h5 style="text-align:center;">No Book Available to Read!</h5>
+    {% endif %}
+</section>
+{% endblock %}

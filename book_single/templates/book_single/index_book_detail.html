@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block head %}{{ object.title }}: Nishantha Publishers{% endblock %}
+
+{% block body %}
+<!-- Page Content -->
+<div class="container">
+
+  <!-- Page Heading/Breadcrumbs -->
+  <h1 class="mt-4 mb-3 sanda-topic-style">{{ object.title }}
+  </h1>
+
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="{% url 'books:index' %}">Home</a>
+    </li>
+    <li class="breadcrumb-item active">{{ object.title }}</li>
+  </ol>
+
+  <!-- Portfolio Item Row -->
+  <div class="row">
+
+    <div class="col-md-6">
+      <img class="img-fluid rounded img-thumbnail" src="{{ object.cover_photo.url }}" alt="{{ object.title }}" width="750">
+    </div>
+
+    <div class="col-md-4">
+      <h4 class="my-3">Book Details</h4>
+
+      <h6>Name - {{ object.title }}</h6>
+      <h6>Auhor - {{ object.author }}</h6>
+
+      <br>
+      <h4 class="my-3">Book Description</h4>
+      <p>{{ object.description }}</p>
+      <br>
+      <h4>Free Read Availability: {{ object.read_free }}</h4>
+      {% if object.read_free is True %}
+      <h5><a href="{{ object.preview.url }}">View the book</a></h5>
+      {% endif %}
+    </div>
+
+  </div>
+  <!-- /.row -->
+
+  <!-- Related Projects Row -->
+  <h3 class="my-4">Related {{ object.book_type }}</h3>
+
+  <div class="row">
+    {% for book in related_book_list %}
+    <div class="col-md-3 col-sm-6 mb-4">
+      <a href="{% url 'book_single:index' pk=book.pk %}">
+        <img class="img img-fluid img-thumbnail" src="{{ book.cover_photo.url }}" alt="{{ book.title }}">
+      </a>
+    </div>
+    {% endfor %}
+
+  </div>
+  <!-- /.row -->
+
+</div>
+{% endblock %}
