@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block head %}Our Blog Results for Search Term '{{search_term}}'{% endblock %}
+
+{% block body %}
+<!-- Page Content -->
+<div class="container">
+
+  <!-- Page Heading/Breadcrumbs -->
+  <h2 class="mt-4 mb-3 sanda-topic-style">Results for Search Term '{{search_term}}'</h2>
+
+  <div class="row">
+
+    <!-- Blog Entries Column -->
+    <div class="col-md-8" style="margin: auto;">
+{% if result_list %}
+{% for post in result_list %}
+      <!-- Blog Post -->
+      <div class="card mb-6" style="margin: auto;">
+        <img class="card-img" src="{{ post.main_picture.url }}" alt="Nishantha Publishers: {{ post.title }}" style="width:100%;">
+        <div class="card-body">
+          <h2 class="card-title">{{ post.title }}</h2>
+          <a href="{% url 'blog_post:post_detail' pk=post.pk %}" class="btn btn-primary">Read More &rarr;</a>
+        </div>
+        <div class="card-footer text-muted">
+          Posted on {{ post.posted_on }}
+          <a href="{% url 'books:index' %}">Nishantha Publishers</a>
+        </div>
+      </div>
+      <br>
+{% endfor %}
+{% else %}
+<h4>No Results Found!</h4>
+{% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

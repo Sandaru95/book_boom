@@ -3,7 +3,8 @@
 {% block head %}Shop | Nishantha Publishers Book Selling page{% endblock %}
 
 {% block body %}
-{% include 'shop/include_cart.html' %}
+<br>
+<br>
 <ol class="breadcrumb">
     <li class="breadcrumb-item">
         <a href="{% url 'books:index' %}">Home</a>
@@ -31,6 +32,7 @@
     </div>
 </section>
 {% endif %}
+<br><br><br><br><br><br><br><br><br><br>
 {% if motivational_list %}
 <section class="book_horizontal_list">
     <div class="book_horizontal_list_head">
@@ -51,6 +53,7 @@
     </div>
 </section>
 {% endif %}
+<br><br><br><br><br><br><br><br><br><br>
 {% if children_list %}
 <section class="book_horizontal_list">
     <div class="book_horizontal_list_head">
@@ -89,13 +92,12 @@
         {% endfor %}
     </div>
 </section>
+<br>
+<br>
+<br>
 {% endif %}
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 {% endblock %}

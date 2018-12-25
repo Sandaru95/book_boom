@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% block head %}Home | Nishantha Publishers{% endblock %}
+
 {% block body %}
   </div>
   <header>
@@ -10,26 +12,25 @@
       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner" role="listbox">
-      <!-- Slide One - Set the background image for this slide in the line below -->
+      <!-- Slide One -->
       <div class="carousel-item active" style="background: #ffffff url('/static/img/home_page_book.jpg') no-repeat center;">
         <div class="carousel-caption d-none d-md-block">
-          <h3 class="sanda-top-image-slide-text">First Slide</h3>
-          <p class="sanda-top-image-slide-text">You may have to fight a battle more than once to win it.</p
-            >
+          <h3 class="sanda-top-image-slide-text">We Provide You Read</h3>
+          <p class="sanda-top-image-slide-text">Knowledge is something that have share.</p>
         </div>
       </div>
-      <!-- Slide Two - Set the background image for this slide in the line below -->
+      <!-- Slide Two -->
       <div class="carousel-item" style="background: #ffffff url('/static/img/home_page_book2.jpg') no-repeat center;">
         <div class="carousel-caption d-none d-md-block">
-          <h3 class="sanda-top-image-slide-text">Second Slide</h3>
-          <p class="sanda-top-image-slide-text">It is never too late to be what you might have been.</p>
+          <h3 class="sanda-top-image-slide-text">Book is Magical</h3>
+          <p class="sanda-top-image-slide-text">Book is something that makes a virtual world around you.</p>
         </div>
       </div>
-      <!-- Slide Three - Set the background image for this slide in the line below -->
+      <!-- Slide Three-->
       <div class="carousel-item" style="background: #ffffff url('/static/img/home_page_book3.jpg') no-repeat center;">
         <div class="carousel-caption d-none d-md-block">
-          <h3 class="sanda-top-image-slide-text">Third Slide</h3>
-          <p class="sanda-top-image-slide-text">Success is the sum of small efforts, repeated day-in and day-out.</p>
+          <h3 class="sanda-top-image-slide-text">Book Fulfils the Man</h3>
+          <p class="sanda-top-image-slide-text">Book is The First Place To Look If You Want More Knowledge.</p>
         </div>
       </div>
     </div>
@@ -48,7 +49,7 @@
 <!-- Page Content -->
 <div class="container sanda-main-container">
 
-  <h2 class="my-4" style="text-align:center;margin:auto;text-decoration:underline;">Greetings! This is the home page.
+  <h2 class="my-4" style="text-align:center;margin:auto;text-decoration:underline;">Welcome to Nishantha Publishers
 
   <!-- Portfolio Section -->
   <h3>Latest Books <small>All books count - {{ all_book_count }}</small></h3>
@@ -70,41 +71,18 @@
     </div>
     {% endfor %}
     {% else %}
-    <div class="container">
+    <div class="container" style="text-align: center;">
         <h4>No books found!</h4>
     </div>
     {% endif %}
   </div>
-  <br>
   <hr>
   <!-- /.row -->
-
-  <!-- Features Section -->
-  <div class="row">
-    <div class="col-lg-6">
-      <h3 class="sanda-topic-style">Some Reasons to use this site.</h3>
-      <br>
-      <dl>
-        <dt>Little Points</dt>
-          <dd>1.You'll get the new informations about new releases before anyone.</dd>
-          <dd>2.You'll able to view books without having to purchase them for free.</dd>
-          <dd>3.24h support for problems regarding our products</dd>
-      </dl>
-      <p>Thanks for visiting this site. This site have 24h support to the problems related to our product. You'll be able to use this site as a online reading platform. This site offers the access to the high quality books for free.</p>
-    </div>
-    <div class="col-lg-6">
-      {% load staticfiles %}
-      <img class="img-fluid img-rounded img-thumbnail" src="{% static 'img/first_purpose.jpg' %}" alt="{{ object.title }} - Nishantha Publishers">
-    </div>
-  </div>
-  <!-- /.row -->
-
-  <hr>
 
   <!-- Call to Action Section -->
   <div class="row mb-4">
     <div class="col-md-8">
-      <p>Have any problems? Having any trouble with something? <mark>Do not mess your mind.</mark> </p>
+      <p>If You Have Any Problems About Things Regarding to Our Product, Press the Contact Button</p>
     </div>
     <div class="col-md-4">
       <button class="btn btn-lg btn-primary btn-block" onclick="contact_print()">Contact us</button>

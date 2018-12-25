@@ -26,11 +26,17 @@
       </a>
     </div>
     <div class="col-md-5">
-      <h3>{{ book.title }}</h3>
-      <h5>{{ book.author }}</h5>
+      <h3><a href="{% url 'book_single:index' pk=book.pk %}">{{ book.title }}</a></h3>
+      <h5>Title: {{ book.title }}</h5>
+      <h5>Author: {{ book.author }}</h5>
+      <h5>Description:</h5>
       <p>{{ book.description }}</p>
-      <a class="btn btn-primary" href="{% url 'book_single:index' pk=book.pk %}">View Book
-        <span class="glyphicon glyphicon-chevron-right"></span>
+      <a class="btn btn-primary" href="{% url 'book_single:index' pk=book.pk %}">
+        <span class="fa fa-info-circle"></span>
+        See Details
+      </a>
+      <a class="btn btn-warning" href="{% url 'shop:book_buy' pk=book.pk %}">Buy
+        <span class="fa fa-shopping-cart"></span>
       </a>
     </div>
   </div>

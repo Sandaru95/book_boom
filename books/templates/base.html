@@ -6,8 +6,9 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="This is a Book Online Selling and Reading Web Platform">
+    <meta name="author" content="Sandaru Rasanjana">
+
     {% load staticfiles %}
     <link rel="icon" type="image/jpg" href="{% static 'img/nishantha_logo.jpg' %}">
     <title>{% block head %}{% endblock %}</title>
@@ -42,6 +43,9 @@
           background-color: dodgerblue;
           color: #FFFFFF;
       }
+      .navbar-brand:hover{
+          color: #fff;
+      }
       .nav-item:hover, .nav-link:hover{
           background-color: #1977d3;
           color: #FFFFFF;
@@ -58,23 +62,27 @@
 
 <body>
 
-    <div class="container" style="background-color: #edeff2; margin-top: 0px;">
+    <div class="container" style="background-color: #edeff2;">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="text-align: center;">
-                <img src="{% static 'img/nishantha_logo.jpg' %}" class="img img-fluid img-thumbnail" style="margin-top: 0px;" width="170" height="auto">
-                <h2>Nishantha Publishers</h2>
-                <h5>248, Bollatha,</h5>
-                <h5>Ganemulla. Sri Lanka.</h5>
+            <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="float:left;margin: 0; padding: 0;">
+                  <img src="{% static 'img/nishantha_logo.jpg' %}" class="img img-fluid img-thumbnail" style="margin-top: 0px;" width="170" height="auto">
+                </div>
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" style="float:left;">
+                  <h2 style="text-align:left;font-weight:900;">Nishantha Publishers</h2>
+                  <p style="margin-left: 35px;font-weight:900;"><i>For Who Wants More Knowledge</i></p>
+                </div>
             </div>
             {% if user.is_authenticated %}
-            <div class="container-fluid">
+            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
               <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="text-align: center;font-family: ubuntu;">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="text-align: right;font-family: ubuntu;">
                   <h4>Hi! {{ user.username }} 😜</h4>
+            {% endif %}
+                  <h4 style="font-size:24px;margin:auto;"><a href="{% url 'shop:cart' %}">Cart<i class="fa fa-shopping-cart"></i></a></h4>
                 </div>
               </div>
             </div>
-            {% endif %}
         </div>
     </div>
     <hr>
@@ -110,7 +118,7 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'shop:index' %}">Online BookShop</a>
+              <a class="nav-link" href="{% url 'shop:index' %}">E Bookshop</a>
             </li>
             <li class="nav-item" id="sanda-nav-item">
                 <a class="nav-link" href="{% url 'read_free:index' %}">Read Free</a>

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block head %}Free Read Online | Allows you to read books free{% endblock %}
+{% block head %}Free Read Online | Nishantha Publishers{% endblock %}
 
 {% block body %}
 <br>
@@ -19,8 +19,12 @@
             <div>
                 <br>
                 <h3 class="text" style="text-decoration:underline;">{{ object.title }}</h3>
+                <h5>{{ object.author }}</h5>
+                <p>{{ object.description }}</p>
                 <br>
-                <h5><a href="{{ object.preview.url }}">Read it Free</a></h5>
+                {% if object.google_drive %}
+                <h5><a href="{{ object.google_drive }}" target="_blank">Read it Free</a></h5>
+                {% endif %}
             </div>
         </div>
     </div>

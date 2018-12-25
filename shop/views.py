@@ -55,8 +55,9 @@ class CartAddView(generic.View):
         book_title = book.title
         book_type = book.book_type
         book_price = book.price
+        book_item_total = int(no_item) * int(book_price)
         book_image_url = book.cover_photo.url
-        it1 = Item(book_type=book_type, title=book_title, qty=no_item, price=book_price, book_image_url=book_image_url)
+        it1 = Item(book_type=book_type, title=book_title, qty=no_item, price=book_price, book_image_url=book_image_url, item_total=book_item_total)
         it1.save()
         return redirect('shop:book_buy', pk=self.kwargs['pk'])
 

@@ -7,11 +7,11 @@
 <div class="container">
 
   <!-- Page Heading/Breadcrumbs -->
-  <h1 class="mt-4 mb-3">{{ object.title }}
+  <h2 class="mt-4 mb-3">{{ object.title }}
     <small>by
       <a href="{% url 'books:index' %}">Nishantha Publishers</a>
     </small>
-  </h1>
+  </h2>
 
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
@@ -41,7 +41,7 @@
       </p>
 
       <hr>
-
+      {% if user.is_authenticated %}
       <!-- Comments Form -->
       <div class="card my-4">
         <h5 class="card-header">Leave a Comment:</h5>
@@ -56,7 +56,11 @@
           </form>
         </div>
       </div>
-
+      {% else %}
+      <div class="card my-4" style="width: 100%;height: 90px;">
+        <h5 style="text-align:center;margin-top: 20px;">You Cannot Leave Comments Without Login</h5>
+      </div>
+      {% endif %}
 {% for comment in object.comment_set.all %}
       <!-- Single Comment -->
       <div class="media mb-4">

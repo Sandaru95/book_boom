@@ -16,6 +16,7 @@ class Book(models.Model):
     cover_photo = models.FileField()
     preview = models.FileField()
     price = models.IntegerField()
+    google_drive = models.CharField(max_length=5000, blank=True)
     read_free = models.BooleanField(default=False)
 
     def __str__(self):

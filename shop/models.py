@@ -6,6 +6,7 @@ class Item(models.Model):
     title = models.CharField(max_length=250)
     qty = models.IntegerField()
     price = models.IntegerField()
+    item_total = models.IntegerField()
     book_image_url = models.CharField(max_length=10000)
 
     def __str__(self):

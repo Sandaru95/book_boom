@@ -3,7 +3,8 @@
 {% block head %}{{ object.title }} | Check this book and Buy{% endblock %}
 
 {% block body %}
-{% include 'shop/include_cart.html' %}
+<br>
+<br>
 <ol class="breadcrumb">
     <li class="breadcrumb-item">
       <a href="{% url 'shop:index' %}">Online BookShop</a>
@@ -17,17 +18,23 @@
     <div style="width:55%;float:left;">
         <img class="img-fluid img-thumbnail" src="{{ object.cover_photo.url }}" alt="{{ object.title }}" style="width:100%;">
     </div>
+    <div style="width:43%;float:right;">
+        <h3>{{ object.title }}</h3>
+        <br>
+        <h4>Book Details</h4>
+        <p>Book Title: {{ object.title }}</p>
+        <p>Author: {{ object.author }}</p>
+        <p>Type: {{ object.book_type }}</p>
+        <p>Unit Price(Rs): {{ object.price }}</p>
+    </div>
     <div style="width:45%;float:right;text-align:center;">
-        <h4>{{ object.title }}</h4>
         <br>
-        <h4>Rs. {{ object.price }}</h4>
-        <br>
-        <form action="{% url 'shop:cart_add' pk=object.pk %}" method="post">
+        <form action="{% url 'shop:cart_add' pk=object.pk %}" method="post" style="float: right;">
             {% csrf_token %}
             <label for="qty">Quantity:</label>
-            <input type="number" id="qty" name="qty">
+            <input type="number" id="qty" name="qty" style="text-align: center;">
             <br>
-            <button type="submit">Add To Cart</button>
+            <button type="submit" class="btn btn-info" style="float: right;">Add To Cart</button>
         </form>
     </div>
 </section>

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block head %}About: Nishantha publishers{% endblock %}
+{% block body %}
+<!-- Page Content -->
+<div class="container sanda-main-container">
+
+  <!-- Page Heading/Breadcrumbs -->
+  <h1 class="mt-4 mb-3 sanda-topic-style">About us
+  </h1>
+
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="{% url 'books:index' %}">Home</a>
+    </li>
+    <li class="breadcrumb-item active">About</li>
+  </ol>
+
+  <!-- Intro Content -->
+  <div class="row">
+    <div class="col-lg-6">
+      {% load staticfiles %}
+      <img class="img-fluid rounded mb-4" src="{% static 'img/about/about_main_picture.jpg' %}" alt="">
+    </div>
+    <div class="col-lg-6">
+      <h2>About Nishantha Publishers</h2>
+      <br>
+      <p>Nishantha Publishers in Sinhala It's Nishantha Prakashana. We have Published tons of Books in Sinhala. The Mission of Our Company is To Provide You The Books That You Are Looking For in Good Quality and Condition at Lower Price. This Website is a Result of Our Heavy Works
+        To Give You A New Experience in EReading. In This Website You can Watch Our New Releases, Buy Books and Also Read Books Free Under Certain Terms.
+      </p>
+    </div>
+  </div>
+  <!-- /.row -->
+</div>
+<!-- /.container -->
+{% endblock %}

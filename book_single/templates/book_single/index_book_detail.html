@@ -24,20 +24,25 @@
       <img class="img-fluid rounded img-thumbnail" src="{{ object.cover_photo.url }}" alt="{{ object.title }}" width="750">
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-6">
       <h4 class="my-3">Book Details</h4>
 
-      <h6>Name - {{ object.title }}</h6>
-      <h6>Auhor - {{ object.author }}</h6>
-
-      <br>
+      <h6>Name: {{ object.title }}</h6>
+      <h6>Author: {{ object.author }}</h6>
+      <h6>Unit Price(Rs): {{ object.price }}</h6>
       <h4 class="my-3">Book Description</h4>
       <p>{{ object.description }}</p>
       <br>
-      <h4>Free Read Availability: {{ object.read_free }}</h4>
       {% if object.read_free is True %}
-      <h5><a href="{{ object.preview.url }}">View the book</a></h5>
+      {% if object.google_drive %}
+      <a class="btn btn-primary" href="{{ object.google_drive }}" target="_blank">Read Free
+        <span class="fa fa-check"></span>
+      </a>
       {% endif %}
+      {% endif %}
+      <a class="btn btn-warning" href="{% url 'shop:book_buy' pk=book.pk %}">Buy
+        <span class="fa fa-shopping-cart"></span>
+      </a>
     </div>
 
   </div>
@@ -47,13 +52,20 @@
   <h3 class="my-4">Related {{ object.book_type }}</h3>
 
   <div class="row">
+    {% if related_book_list %}
     {% for book in related_book_list %}
     <div class="col-md-3 col-sm-6 mb-4">
       <a href="{% url 'book_single:index' pk=book.pk %}">
         <img class="img img-fluid img-thumbnail" src="{{ book.cover_photo.url }}" alt="{{ book.title }}">
+        <h5>{{ book.title }}</h5>
       </a>
     </div>
     {% endfor %}
+    {% else %}
+    <div style="width:100%;">
+      <h4 style="text-align:center;">No Related Books Found!</h4>
+    </div>
+    {% endif %}
 
   </div>
   <!-- /.row -->

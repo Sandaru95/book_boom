@@ -1,5 +1,5 @@
 function contact_print(){
-	window.alert('mail: nishanthapubli@gmail.com');
+	window.alert('Contact Details:\nMail: nishanthapubli@gmail.com\nTel: +94112247436\n For Further Details Visit Our Contact Page');
 }
 function verify_login(){
 	let userName = document.getElementById('username').value;
